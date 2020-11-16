@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- fa fa icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<h1 class="text-center mt-5 ">Summary Table </h1>
+
+<div class="container">
+<table class="table table-striped mt-5  ">
+
+  <thead>
+    <tr>
+      <th scope="col">Sn</th>
+      <th scope="col">Title</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order_item in order.items.all %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ order_item.item.title }}</td>
+      <td> <a href="{{ order_item.item.get_add_cart_url }}"><i class="text-success fa fa-plus"></i></a>  &nbsp;{{ order_item.quantity}} &nbsp; <a href="{{ order_item.item.get_remove_one_cart_url }}"> <i class="text-danger fa fa-minus"></a></i></td>
+      <td>{{ order_item.get_total_price }} &nbsp; <a href="{{ order_item.item.get_remove_cart }}"><i
+            class=" text-danger fas fa-trash"></i></a> &nbsp; <span"> save {{ order_item.get_total_discount }} </span>
+          </i> </td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <th scope="row" colspan="3">Total price</th>
+      <td  class="font-weight-bold"  >{{ order.get_all_product_price }}</td>
+    </tr>
+
+
+    <tr>
+
+      <td colspan='5'><a href="{% url 'core:checkout' %}"   class="btn btn-warning float-right">Continue to checkout</a>
+       <a href="/" class="btn btn-primary mr-2 float-right">Go For Shooping</a></td>
+    </tr> 
+  </tbody>
+
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %} product detail {% endblock %}
+{% block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container dark-grey-text mt-5">
+    {% for order in orders reversed %}
+    {% for order_item in order.items.all %}
+    <!--Grid row-->
+    <div class="row wow fadeIn mb-5 shadow-sm">
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <img src="{{ order_item.item.image.url }}" class="img-fluid" alt="">
+      </div>
+      <!--Grid column-->
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Content-->
+        <div class="p-4">
+          <div class="mb-3">
+            <a href="">
+              <span class="badge purple mr-1">Category 2</span>
+            </a>
+            <a href="">
+              <span class="badge blue mr-1">New</span>
+            </a>
+            <a href="">
+              <span class="badge red mr-1">Bestseller</span>
+            </a>
+          </div>
+          <p class="lead">
+            <span class="mr-1">
+              <del>${{order_item.item.price}} </del>  
+            </span>
+            <span>$ {{ order_item.item.get_actual_price }}</span>
+          <p>save $ {{ order_item.item.discount }}</p>
+          </p>
+          {% if order.ref_code %}
+          <p> Your ref_code : <span class="text-primary">{{ order.ref_code }} </span> </p>
+          {% endif %}
+          <p class="lead font-weight-bold">Description</p>
+
+          <p>{{ order_item.item.discription }}</p>
+
+        </div>
+        <!--Content-->
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+    {% endfor %}
+    {% endfor %}
+  </div>
+</main>
+<!--Main layout-->
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %} product detail {% endblock %}
+{% block content %}
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+      
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="{{ object.image.url }}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">Category 2</span>
+              </a>
+              <a href="">
+                <span class="badge blue mr-1">New</span>
+              </a>
+              <a href="">
+                <span class="badge red mr-1">Bestseller</span>
+              </a>
+            </div>
+
+            <p class="lead">
+              <span class="mr-1">
+                <del>${{object.price}} </del>
+              </span>
+              <span>$ {{ object.get_actual_price }}</span>
+              <p>save $ {{ object.discount }}</p>
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.discription }}</p>
+
+            <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <a class="btn btn-primary btn-md my-0 p"  href="{{ object.get_add_cart_url }}" >Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </a>
+
+              <a class="btn btn-danger btn-md my-0 p"  href="{{ object.get_remove_one_cart_url }}" >Remove to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+                
+              </a>
+          
+            </form>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+{% endblock %}
