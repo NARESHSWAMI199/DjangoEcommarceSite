@@ -1,7 +1,3 @@
-# NSFUNTU S
-<img width="782" alt="Frame 1@2x" src="https://user-images.githubusercontent.com/51693679/99356975-1b866300-28d1-11eb-9afb-bd9c2ac082f6.png">
-
-
 
 # Index 
  ![Screenshot from 2020-11-17 11-52-08](https://user-images.githubusercontent.com/51693679/99354018-ab291300-28cb-11eb-925d-a095fa9f0f75.png)
